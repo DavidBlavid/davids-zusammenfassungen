@@ -1,0 +1,148 @@
+* {
+	box-sizing: border-box;
+}
+
+
+body {
+	font-family: Lato, sans-serif;
+	margin: 0;
+	padding: 1rem;
+	justify-content: center;
+	align-items: center;
+	background-image: linear-gradient(120deg, #1d1d1d 0%, #101113 100%); 
+}
+
+img {
+	width: 100%;
+	display: block;
+	transition: transform 500ms;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 2.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	max-width: 100%;
+	width: 80rem;
+}
+
+figure {
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+figure::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200%;
+	height: 200%;
+	background: rgba(0, 0, 0, 0.5);
+	transform-origin: center;
+	opacity: 0;
+	transform: scale(2);
+	transition: opacity 150ms;
+}
+
+figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	place-items: center;
+	text-align: center;
+	padding: 1rem;
+	color: white;
+	font-size: 1.2rem;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 300ms, transform 300ms;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+a:is(:hover, :focus) figure::after {
+	opacity: 1;
+}
+
+a:is(:hover, :focus) figcaption {
+	opacity: 1;
+	transition: opacity 300ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	figcaption {
+		transform: translate3d(0, 2rem, 0);
+	}
+	
+	figure::after {
+		border-radius: 50%;
+		opacity: 1;
+		transform: scale(0);
+		transition: transform 450ms;
+	}
+	
+	a:is(:hover, :focus) figure::after {
+		transform: scale(2.5);
+	}
+
+	a:is(:hover, :focus) figcaption {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+		transition: opacity 300ms 200ms, transform 300ms 200ms;
+	}
+
+	a:is(:hover, :focus) img {
+		transform: scale(1.2);
+	}
+}
+
+.caption{
+	color: rgba(255, 255, 255, 1.0);
+	font-weight: bold;
+
+}
+
+.year {
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: lighter;
+}
+
+.gallerycontainer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.jaro-title {
+	font-family: "Jaro", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 70pt;
+}
+
+header {
+	text-align: center;
+	padding: 0.01rem;
+	margin: 1rem 20vw 5rem 20vw;
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+}
+
+footer {
+	text-align: center;
+	margin:2rem;
+	padding: 0.5rem 0.5rem 2rem 0.5rem;
+	background: rgba(0, 0, 0, 0.8);
+	color: rgb(78, 78, 78);
+}
